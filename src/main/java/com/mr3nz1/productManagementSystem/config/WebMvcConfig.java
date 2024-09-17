@@ -13,6 +13,6 @@ import java.util.List;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/api/v1/products").addPathPatterns("/api/v1/categories");
+//        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/api/v1/products").addPathPatterns("/api/v1/categories");
     }
 }

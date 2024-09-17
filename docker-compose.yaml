@@ -1,0 +1,39 @@
+version: "1.0"
+
+services:
+  app:
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - mongodb
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/product_management_system
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: simplePassword
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/product_management_system
+    ports:
+      - "8081:8080"
+    restart: always
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_DATABASE: product_management_system
+    ports:
+      - "27018:27017"
+    restart: always
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootPassword
+      MYSQL_USER: user
+      MYSQL_PASSWORD: simplePassword
+      MYSQL_DATABASE: product_management_system
+    ports:
+      - "3307:3306"
+    restart: always
